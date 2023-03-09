@@ -1,18 +1,25 @@
+@font-face {
+  font-family: pixelemulator;
+  src: url(./fonts/PixelEmulator.otf);
+}
+
 .App {
-    font-family: Avenir;
+    font-family: pixelemulator;
+    background-color: #4f6366;
+    color: #363031;
   }
-  
+
 .cardGroup  {
   display: inline-block;
   padding: 2rem;
   position: relative;
-  top: 1.25em;
+  top: -3em;
 }
   .Card {
     /* border-radius: 8px; */
-    box-shadow: 0px 0px 8px #ccc;
-    color: #253b56;
-    margin: 12px 0px;
+    box-shadow: 0px 0px 8px #363031;
+    color: #363031;
+    margin: 30px 0px;
   }
   
   .CardContent {
@@ -28,21 +35,28 @@
   }
   
   .CardTitle {
-    font-family: Avenir-Heavy;
-    font-size: 20;
-    font-weight: 600;
+    font-family: Avenir;
+    font-size: 2em;
+    font-weight: 50;
     margin: 12px 0px 0px 0px;
+    color:#daa060 ;
+    padding: 2rem;
   }
   
   .CardType {
-    color: #040c16;
+    font-family: pixelemulator;
+    color: #363031;
     font-size: 14;
     margin: 4px 0;
-    background-color: #9bc2f2;
+    background-color: #d8ac8f;
+    font-weight: 600;
   }
   
   .CardDescription {
+    font-family: Avenir;
     font-size: 14;
     margin: 8px 0 0 0;
+    padding: 0.5rem;
+    color: #daa060;
   }
   
