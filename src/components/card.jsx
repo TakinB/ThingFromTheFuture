@@ -24,7 +24,7 @@ function CardImage(props) {
   // If an image was passed:
   if (isImageURL) {
     return (
-      <div className="styleImage">
+      <div className="CardImage">
         <img
           style={{ width: props.width + "px", marginTop: "-8%" }}
           src={props.image}
@@ -38,30 +38,30 @@ function CardImage(props) {
 
 function CardContent(props) {
   return (
-    <div className="styleCardContent">
-      <p className="styleCardType">{props.type}</p>  
-      <p className="styleCardTitle">{props.title}</p>
-      <p className="styleDescription">{props.description}</p>
+    <div className="CardContent">
+      <p className="CardType">{props.type}</p>  
+      <p className="CardTitle">{props.title}</p>
+      <p className="CardDescription">{props.description}</p>
     </div>
   );
 }
 
-export default class Card extends React.Component {
-  render() {
+export default function Card(props) {
+  
     return (
-      <div style={{ width: this.props.width + "px" }}>
-        <div className="styleCard">
-          <CardImage image={this.props.image} width={this.props.width} />
+      <div style={{ width: props.width + "px" }}>
+        <div className="Card">
+          <CardImage image={props.image} width={props.width} />
           <CardContent 
-            title={this.props.title}
-            type={this.props.type}
-            description={this.props.description}
+            title={props.title}
+            type={props.type}
+            description={props.description}
           />
         </div>
       </div>
     );
   }
-}
+
 
 // 2. Defaults /////////////////////////////////////////////
 Card.defaultProps = {

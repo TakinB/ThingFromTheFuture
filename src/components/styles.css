@@ -8,39 +8,40 @@
   position: relative;
   top: 1.25em;
 }
-  .styleCard {
-    border-radius: 8px;
+  .Card {
+    /* border-radius: 8px; */
     box-shadow: 0px 0px 8px #ccc;
     color: #253b56;
     margin: 12px 0px;
   }
   
-  .styleCardContent {
-    padding: 4px 16px 20px 16px;
+  .CardContent {
+    padding: 0px 0px 0px 0px;
+    border-radius: 5rem;
   }
   
-  .styleImage {
+  .CardImage {
     background-color: lightGray;
-    border-radius: 8px 8px 0 0;
+    /* border-radius: 8px 8px 0 0; */
     max-height: 140px;
     overflow: hidden;
   }
   
-  .styleCardTitle {
+  .CardTitle {
     font-family: Avenir-Heavy;
     font-size: 20;
     font-weight: 600;
     margin: 12px 0px 0px 0px;
   }
   
-  .styleCardType {
+  .CardType {
     color: #040c16;
     font-size: 14;
     margin: 4px 0;
     background-color: #9bc2f2;
   }
   
-  .styleDescription {
+  .CardDescription {
     font-size: 14;
     margin: 8px 0 0 0;
   }
