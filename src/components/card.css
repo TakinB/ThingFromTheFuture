@@ -7,20 +7,16 @@
     font-family: pixelemulator;
     background-color: #4f6366;
     color: #363031;
+    align-items: center;
   }
 
-.cardGroup  {
-  display: inline-block;
-  padding: 2rem;
-  position: relative;
-  top: -3em;
-}
   .Card {
     /* border-radius: 8px; */
     box-shadow: 0px 0px 8px #363031;
     color: #363031;
     margin: 30px 0px;
     border-radius: 1rem;
+    align-items: center;
   }
   
   .CardContent {

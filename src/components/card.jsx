@@ -1,5 +1,5 @@
 import React from "react";
-import './styles.css'
+import './card.css'
 /**
  * NOTES:
  * - On styling:
@@ -65,7 +65,7 @@ export default function Card(props) {
 
 // 2. Defaults /////////////////////////////////////////////
 Card.defaultProps = {
-  width: 350,
+  width: 400,
   title: "GROW",
   type: "ARC",
   description: ""

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from "react";
 import reactLogo from './assets/react.svg'
 import './App.css'
 
@@ -12,7 +12,7 @@ import carevents from './mobility/events.json'
 import carcontexts from './mobility/contexts.json'
 import carmoods from './mobility/moods.json'
 
-import Card from './components/card'
+import Deck from './components/cardDeck'
 
 
 
@@ -36,56 +36,54 @@ function shuffle(array) {
 
 // use instead  math.random(length of the array) 
 function App() {
-  const [mode, setMode] = useState(false);
+  const [mode, setMode] = useState(true);
+  const [object, setObject] = useState([{        "title": "object", "description": "example"}]);
+  const [event, setEvent] = useState([{        "title": "event", "description": "example"}]);
+  const [mood, setMood] = useState([{        "title": "mood", "description": "example"}]);
+  const [context, setContext] = useState([{        "title": "context", "description": "example"}]);
+  const [intro, setIntro] = useState("example");
 
-  //silly thing from the future
-  const myMoods = shuffle(moods).slice(0,1)
-  const myEvents = shuffle(events).slice(0,1)
-  const myObjects = shuffle(objects).slice(0,1)
-  const myContexts = shuffle(contexts).slice(0,1)
+  const handleMode = () => {
+      //silly thing from the future
+    const mySillyMoods = shuffle(moods).slice(0,1)
+    const mySillyEvents = shuffle(events).slice(0,1)
+    const mySillyObjects = shuffle(objects).slice(0,1)
+    const mySillyContexts = shuffle(contexts).slice(0,1)
 
-  //mobility thing from the future
-  const myCarMoods = shuffle(carmoods).slice(0,1)
-  const myCarEvents = shuffle(carevents).slice(0,1)
-  const myCarObjects = shuffle(carobjects).slice(0,1)
-  const myCarContexts = shuffle(carcontexts).slice(0,1)
+    //mobility thing from the future
+    const myCarMoods = shuffle(carmoods).slice(0,1)
+    const myCarEvents = shuffle(carevents).slice(0,1)
+    const myCarObjects = shuffle(carobjects).slice(0,1)
+    const myCarContexts = shuffle(carcontexts).slice(0,1)
+
+
+    if(mode){
+      setIntro("Let's get silly")
+      setEvent(mySillyEvents)
+      setObject(mySillyObjects)
+      setContext(mySillyContexts)
+      setMood(mySillyMoods)
+    }
+    if(!mode){
+      setIntro("Imagine mobililty")
+      setEvent(myCarEvents)
+      setObject(myCarObjects)
+      setContext(myCarContexts)
+      setMood(myCarMoods)
+    }
+    console.log("button is clicked")
+    setMode(!mode)
+  
+  }
 
   return (
     <div className="App">
-      <button onClick={()=>setMode(!mode) } className="btn btn-primary mb-5" />
-      <div className="cardGroup">
-        <h1>Let's get silly!</h1>
-        {
-          myObjects.map(myObjects => <Card type="Object" title={myObjects.title} key={myObjects.title}/>)
-        }
-        {
-          myContexts.map(myContexts => <Card type="Context" title={myContexts.title} key={myContexts.title}/>)
-        }
-        {
-          myEvents.map(myEvents => <Card type="Type of Future" title={myEvents.title} description={myEvents.description} key={myEvents.title}/>)
-        }
-        {
-          myMoods.map(myMoods => <Card type="Emotion" title={myMoods.title} key={myMoods.title}/>)
-        }
-      </div>
-      <div className="cardGroup">
-        <h1>Let's think about mobility!</h1>
-        {
-          myCarObjects.map(myCarObjects => <Card type="Object" title={myCarObjects.title} key={myCarObjects.title}/>)
-        }
-        {
-          myCarContexts.map(myCarContexts => <Card type="Context" title={myCarContexts.title} key={myCarContexts.title} />)
-        }
-        {
-          myCarEvents.map(myCarEvents => <Card type="Type of Future" title={myCarEvents.title} description={myCarEvents.description } key={myCarEvents.title}/>)
-        }
-        {
-          myCarMoods.map(myCarMoods => <Card type="Emotion" title={myCarMoods.title} key={myCarMoods.title} />)
-        }
-      </div>
-    </div>
-    
+      <button onClick={handleMode}>Switch mode</button>
+      {console.log(mode)}
+      <Deck gameIntro={intro} Moods={mood} Objects={object} Contexts={context} Events={event}/> 
+    </div> 
   );
 }
 
 export default App
+
