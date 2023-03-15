@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import reactLogo from './assets/react.svg'
 import './App.css'
-
+import FileUpload from './components/FileUpload';
 import objects from './data/objects.json'
 import events from './data/events.json'
 import contexts from './data/contexts.json'
@@ -13,7 +13,8 @@ import carcontexts from './mobility/contexts.json'
 import carmoods from './mobility/moods.json'
 
 import Deck from './components/cardDeck'
-
+import Switch  from './components/Switch'
+import { getStyleValue } from "@mui/system";
 
 
 function shuffle(array) {
@@ -57,14 +58,14 @@ function App() {
     const myCarContexts = shuffle(carcontexts).slice(0,1)
 
 
-    if(mode){
+    if(!mode){
       setIntro("Let's get silly")
       setEvent(mySillyEvents)
       setObject(mySillyObjects)
       setContext(mySillyContexts)
       setMood(mySillyMoods)
     }
-    if(!mode){
+    if(mode){
       setIntro("Imagine mobililty")
       setEvent(myCarEvents)
       setObject(myCarObjects)
@@ -78,9 +79,13 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={handleMode}>Switch mode</button>
+      <Switch 
+        isOn={mode}
+        handleToggle={() => handleMode()}
+      />
       {console.log(mode)}
       <Deck gameIntro={intro} Moods={mood} Objects={object} Contexts={context} Events={event}/> 
+      {/* <FileUpload></FileUpload> */}
     </div> 
   );
 }
