@@ -9,10 +9,11 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    width: 100px;
-    height: 50px;
+    width: 6em;
+    height: 2.5rem;
+    margin: 0.5rem;
     background: #d8ac8f;
-    border-radius: 100px;
+    border-radius: 8px;
     position: relative;
     transition: background-color .2s;
   }
@@ -20,11 +21,11 @@
   .react-switch-label .react-switch-button {
     content: '';
     position: absolute;
-    top: 2px;
+    top: 6px;
     left: 2px;
-    width: 45px;
-    height: 45px;
-    border-radius: 45px;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
     transition: 0.2s;
     background: #4f6366;
     box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);

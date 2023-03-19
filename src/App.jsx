@@ -77,11 +77,11 @@ function App() {
 
   return (
     <div className="App">
+      <button onClick={event =>handleToggle()}> redraw </button>
       <Switch 
         isOn={mode}
         handleToggle={() => {mode = !mode; handleToggle();}}
       />
-      <button onClick={event =>handleToggle()}> redraw </button>
       <Deck gameIntro={intro} Moods={mood} Objects={object} Contexts={context} Events={event}/> 
       {/* <FileUpload></FileUpload> */}
     </div> 
