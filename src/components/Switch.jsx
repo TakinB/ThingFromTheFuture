@@ -4,7 +4,7 @@ import './Switch.css';
 const Switch = ({isOn, handleToggle}) => {
   return (
     <div className="customised-toggle" style={{display:"flex"}}>
-      <p style={{marginRight:"0.5rem"}}>customised mode </p>
+      <p style={{marginRight:"0.5rem"}}>Silly mode</p>
       <input
         checked={isOn}
         onChange={handleToggle}
@@ -19,7 +19,7 @@ const Switch = ({isOn, handleToggle}) => {
       >
         <span className={`react-switch-button`} />
       </label>
-      <p style={{marginLeft:"1rem"}}>silly mode</p>
+      <p style={{marginLeft:"1rem"}}>customised mode</p>
       </div>
   );
 };

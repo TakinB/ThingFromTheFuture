@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import reactLogo from './assets/react.svg'
 import './App.css'
 import FileUpload from './components/FileUpload';
@@ -16,6 +16,7 @@ import Deck from './components/cardDeck'
 import Switch  from './components/Switch'
 import { getStyleValue } from "@mui/system";
 
+let mode = false
 
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
@@ -37,15 +38,17 @@ function shuffle(array) {
 
 // use instead  math.random(length of the array) 
 function App() {
-  const [mode, setMode] = useState(true);
-  const [object, setObject] = useState([{        "title": "object", "description": "example"}]);
-  const [event, setEvent] = useState([{        "title": "event", "description": "example"}]);
-  const [mood, setMood] = useState([{        "title": "mood", "description": "example"}]);
-  const [context, setContext] = useState([{        "title": "context", "description": "example"}]);
+  const [exmode, setExMode] = useState(false);
+  const [object, setObject] = useState([{        "title": "Beverage", "description": "example"}]);
+  const [event, setEvent] = useState([{        "title": "Collapse", "description": "example"}]);
+  const [mood, setMood] = useState([{        "title": "Amusement", "description": "example"}]);
+  const [context, setContext] = useState([{        "title": "Zombies", "description": "example"}]);
   const [intro, setIntro] = useState("example");
 
-  const handleMode = () => {
-      //silly thing from the future
+
+  const handleToggle = () => {
+    
+    //silly thing from the future
     const mySillyMoods = shuffle(moods).slice(0,1)
     const mySillyEvents = shuffle(events).slice(0,1)
     const mySillyObjects = shuffle(objects).slice(0,1)
@@ -56,10 +59,8 @@ function App() {
     const myCarEvents = shuffle(carevents).slice(0,1)
     const myCarObjects = shuffle(carobjects).slice(0,1)
     const myCarContexts = shuffle(carcontexts).slice(0,1)
-
-
+    
     if(!mode){
-      setIntro("Let's get silly")
       setEvent(mySillyEvents)
       setObject(mySillyObjects)
       setContext(mySillyContexts)
@@ -72,18 +73,15 @@ function App() {
       setContext(myCarContexts)
       setMood(myCarMoods)
     }
-    console.log("button is clicked")
-    setMode(!mode)
-  
   }
 
   return (
     <div className="App">
       <Switch 
         isOn={mode}
-        handleToggle={() => handleMode()}
+        handleToggle={() => {mode = !mode; handleToggle();}}
       />
-      {console.log(mode)}
+      <button onClick={event =>handleToggle()}> redraw </button>
       <Deck gameIntro={intro} Moods={mood} Objects={object} Contexts={context} Events={event}/> 
       {/* <FileUpload></FileUpload> */}
     </div> 

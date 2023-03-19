@@ -1,5 +1,5 @@
 import React from 'react';
-import './FileUpload.css'
+// import './FileUpload.css'
 function FileUpload() {
     
     const handleUpload =() => {
