@@ -37,6 +37,7 @@ function CardImage(props) {
 }
 
 function CardContent(props) {
+  // if(props.type || props.title)
   return (
     <div className="CardContent">
       <p className="CardType">{props.type}</p>  
@@ -66,7 +67,7 @@ export default function Card(props) {
 // 2. Defaults /////////////////////////////////////////////
 Card.defaultProps = {
   width: 400,
-  title: "GROW",
-  type: "ARC",
+  title: "not found",
+  type: "not found",
   description: ""
 };

@@ -32,22 +32,22 @@ function shuffle(array) {
     [array[currentIndex], array[randomIndex]] = [
       array[randomIndex], array[currentIndex]];
   }
-
   return array;
 }
 
 // use instead  math.random(length of the array) 
 function App() {
   const [exmode, setExMode] = useState(false);
-  const [object, setObject] = useState([{        "title": "Beverage", "description": "example"}]);
+  const [object, setObject] = useState([ "Beverage"]);
   const [event, setEvent] = useState([{        "title": "Collapse", "description": "example"}]);
-  const [mood, setMood] = useState([{        "title": "Amusement", "description": "example"}]);
-  const [context, setContext] = useState([{        "title": "Zombies", "description": "example"}]);
+  const [mood, setMood] = useState(["Amusement"]);
+  const [context, setContext] = useState(["Zombies"]);
   const [intro, setIntro] = useState("example");
 
 
   const handleToggle = () => {
     
+
     //silly thing from the future
     const mySillyMoods = shuffle(moods).slice(0,1)
     const mySillyEvents = shuffle(events).slice(0,1)
@@ -83,7 +83,7 @@ function App() {
         handleToggle={() => {mode = !mode; handleToggle();}}
       />
       <Deck gameIntro={intro} Moods={mood} Objects={object} Contexts={context} Events={event}/> 
-      {/* <FileUpload></FileUpload> */}
+      <FileUpload></FileUpload>
     </div> 
   );
 }
