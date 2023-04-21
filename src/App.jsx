@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import reactLogo from './assets/react.svg'
 import './App.css'
 import FileUpload from './components/FileUpload';
@@ -14,7 +14,10 @@ import carmoods from './mobility/moods.json'
 
 import Deck from './components/cardDeck'
 import Switch  from './components/Switch'
+import TextInput from './components/textInput'
 import { getStyleValue } from "@mui/system";
+
+
 
 let mode = false
 
@@ -43,7 +46,11 @@ function App() {
   const [mood, setMood] = useState(["Amusement"]);
   const [context, setContext] = useState(["Zombies"]);
   const [intro, setIntro] = useState("example");
+  const [data, setData] = useState(["test1", "test2"]);
 
+  const handleData = (data) => {
+    setData(data)
+  }
 
   const handleToggle = () => {
     
@@ -83,7 +90,7 @@ function App() {
         handleToggle={() => {mode = !mode; handleToggle();}}
       />
       <Deck gameIntro={intro} Moods={mood} Objects={object} Contexts={context} Events={event}/> 
-      <FileUpload></FileUpload>
+      <TextInput chooseData={handleData}/>
     </div> 
   );
 }
