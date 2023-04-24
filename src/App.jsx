@@ -82,6 +82,14 @@ function App() {
     }
   }
 
+  function CallBack (childData){
+    console.log(childData)
+    // setEvent(childData)
+    // setObject(childData)
+    // setContext(childData)
+    // setMood(childData)
+  }
+
   return (
     <div className="App">
       <button onClick={event =>handleToggle()}> redraw </button>
@@ -90,7 +98,7 @@ function App() {
         handleToggle={() => {mode = !mode; handleToggle();}}
       />
       <Deck gameIntro={intro} Moods={mood} Objects={object} Contexts={context} Events={event}/> 
-      <TextInput chooseData={handleData}/>
+      <TextInput handleCallback={CallBack}/>
     </div> 
   );
 }
