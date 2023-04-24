@@ -44,7 +44,7 @@ const TextInput = ({handleCallback}) => {
     const [objectString, setObjectString] = useState(["object1", "object2"]);
     const [contextString, setContextString] = useState(["context1", "context2"]);
     const [emotionString, setEmotionString] = useState(["emotion1", "emotion2"]);
-
+    const [dataString, setDataString] = useState([objectString, contextString, emotionString])
 
     // const objectString = React.useRef([{        "title": "Collapse", "description": "example"}]);
     // const contextString = React.useRef([{        "title": "Collapse", "description": "example"}]);
@@ -76,7 +76,7 @@ const TextInput = ({handleCallback}) => {
               type="string"
           />
           <p></p>
-          <button onClick={e =>{e.preventDefault(); handleCallback("the data is passed from child")}}>
+          <button onClick={e =>{e.preventDefault(); handleCallback(dataString)}}>
             submit
           </button>
 

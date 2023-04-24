@@ -85,9 +85,9 @@ function App() {
   function CallBack (childData){
     console.log(childData)
     // setEvent(childData)
-    // setObject(childData)
-    // setContext(childData)
-    // setMood(childData)
+    setObject(childData[0])
+    setContext(childData[1])
+    setMood(childData[2])
   }
 
   return (
