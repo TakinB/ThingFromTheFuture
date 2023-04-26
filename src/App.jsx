@@ -15,11 +15,12 @@ import carmoods from './mobility/moods.json'
 import Deck from './components/cardDeck'
 import Switch  from './components/Switch'
 import TextInput from './components/textInput'
+import RadioButton from './components/RadioButton'
 import { getStyleValue } from "@mui/system";
 
 
 
-let mode = false
+// let mode = false
 
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
@@ -40,7 +41,6 @@ function shuffle(array) {
 
 // use instead  math.random(length of the array) 
 function App() {
-  const [exmode, setExMode] = useState(false);
   const [object, setObject] = useState([ "Beverage"]);
   const [event, setEvent] = useState([{        "title": "Collapse", "description": "example"}]);
   const [mood, setMood] = useState(["Amusement"]);
@@ -52,9 +52,9 @@ function App() {
     setData(data)
   }
 
-  const handleToggle = () => {
+  function handleToggle(mode) {
     
-
+    console.log(mode)
     //silly thing from the future
     const mySillyMoods = shuffle(moods).slice(0,1)
     const mySillyEvents = shuffle(events).slice(0,1)
@@ -67,18 +67,28 @@ function App() {
     const myCarObjects = shuffle(carobjects).slice(0,1)
     const myCarContexts = shuffle(carcontexts).slice(0,1)
     
-    if(!mode){
+    if(mode == "Silly"){
       setEvent(mySillyEvents)
       setObject(mySillyObjects)
       setContext(mySillyContexts)
       setMood(mySillyMoods)
     }
-    if(mode){
+    if(mode == "Mobility"){
       setIntro("Imagine mobililty")
       setEvent(myCarEvents)
       setObject(myCarObjects)
       setContext(myCarContexts)
       setMood(myCarMoods)
+    }
+    if(mode == "Custom"){
+
+      setObject(myCustomeObjects)
+      setContext(myCustomeContexts)
+      setMood(myCustomeMoods)
+      // setEvent(childData)
+  
+      console.log(childData)
+      console.log(myCustomeObjects)
     }
   }
 
@@ -104,12 +114,13 @@ function App() {
   return (
     <div className="App">
       <button onClick={event =>handleToggle()}> redraw </button>
-      <Switch 
+      {/* <Switch 
         isOn={mode}
         handleToggle={() => {mode = !mode; handleToggle();}}
-      />
+      /> */}
       <Deck gameIntro={intro} Moods={mood} Objects={object} Contexts={context} Events={event}/> 
       <TextInput handleCallback={CallBack}/>
+      <RadioButton handleMode={handleToggle}/>
     </div> 
   );
 }
