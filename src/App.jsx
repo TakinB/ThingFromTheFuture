@@ -83,11 +83,22 @@ function App() {
   }
 
   function CallBack (childData){
-    console.log(childData)
+
+    //customise thing from the future
+    const myCustomeObjects = shuffle(childData[0]).slice(0,1)
+    const myCustomeContexts = shuffle(childData[1]).slice(0,1)
+    const myCustomeMoods = shuffle(childData[2]).slice(0,1)
+    // const myCustomeEvents = shuffle(carevents).slice(0,1)
+
+
+
+    setObject(myCustomeObjects)
+    setContext(myCustomeContexts)
+    setMood(myCustomeMoods)
     // setEvent(childData)
-    setObject(childData[0])
-    setContext(childData[1])
-    setMood(childData[2])
+
+    console.log(childData)
+    console.log(myCustomeObjects)
   }
 
   return (

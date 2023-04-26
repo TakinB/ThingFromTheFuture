@@ -59,24 +59,24 @@ const TextInput = ({handleCallback}) => {
             // onChange={e => {e.preventDefault();
             //     objectString.current.value = e.target.value}}
             // type="string"
-            onChange={e => setObjectString(e.target.value)}
+            onChange={e => setObjectString(e.target.value.split(','))}
             type="string"
           />
           <p>Context:</p>
 
           <input className="singleInput"
               value={contextString}
-              onChange={e => setContextString(e.target.value)}
+              onChange={e => setContextString(e.target.value.split(','))}
               type="string"
           />
           <p>Emotion:</p>
           <input className="singleInput"
               value={emotionString}
-              onChange={e => setEmotionString(e.target.value)}
+              onChange={e => setEmotionString(e.target.value.split(','))}
               type="string"
           />
           <p></p>
-          <button onClick={e =>{e.preventDefault(); handleCallback(dataString)}}>
+          <button onClick={e =>{e.preventDefault(); handleCallback([objectString, contextString, emotionString])}}>
             submit
           </button>
 
