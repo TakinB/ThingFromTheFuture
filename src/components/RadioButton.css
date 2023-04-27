@@ -4,3 +4,9 @@
     align-items: center;
     justify-content: space-between;
 }
+
+
+.RadioLabel{
+    display: inline;
+    padding: 1rem;
+}

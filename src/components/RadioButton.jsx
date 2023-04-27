@@ -14,35 +14,42 @@ export default function RadioButton({handleMode}) {
     <div className="RadioButton">
       <h3>Select mode: </h3>
 
-      <input className="singleRadio"
-        type="radio"
-        name="Silly"
-        value="Silly"
-        id="Silly"
-        checked={mode === "Silly"}
-        onChange={e => {setMode(e.target.value); handleMode(e.target.value)}}
-      />
-      <label htmlFor="Silly">Silly</label>
+      <div className="RadioLabel">
+        <input className="singleRadio"
+                type="radio"
+                name="Silly"
+                value="Silly"
+                id="Silly"
+                checked={mode === "Silly"}
+                onChange={e => {setMode(e.target.value); handleMode(e.target.value)}}
+              />
+              <label htmlFor="Silly">Silly</label>
+      </div>
 
-      <input className="singleRadio"
-        type="radio"
-        name="Mobility"
-        value="Mobility"
-        id="Mobility"
-        checked={mode === "Mobility"}
-        onChange={e => {setMode(e.target.value); handleMode(e.target.value)}}
-      />
-      <label htmlFor="Mobility">Mobility</label>
+      <div className="RadioLabel">
+        <input className="singleRadio"
+                type="radio"
+                name="Mobility"
+                value="Mobility"
+                id="Mobility"
+                checked={mode === "Mobility"}
+                onChange={e => {setMode(e.target.value); handleMode(e.target.value)}}
+              />
+              <label htmlFor="Mobility">Mobility</label>
+      </div>
 
-      <input className="singleRadio"
-        type="radio"
-        name="Custom"
-        value="Custom"
-        id="Custom"
-        checked={mode === "Custom"}
-        onChange={e => {setMode(e.target.value); handleMode(e.target.value)}}
-      />
-      <label htmlFor="Custom">Custom</label>
+      <div className="RadioLabel">
+        <input className="singleRadio"
+                type="radio"
+                name="Charging"
+                value="Charging"
+                id="Charging"
+                checked={mode === "Charging"}
+                onChange={e => {setMode(e.target.value); handleMode(e.target.value)}}
+              />
+              <label htmlFor="Charging">Charging</label>
+      </div>
+
     </div>
   )
 }

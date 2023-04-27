@@ -12,6 +12,11 @@ import carevents from './mobility/events.json'
 import carcontexts from './mobility/contexts.json'
 import carmoods from './mobility/moods.json'
 
+import Chargingobjects from './charging/objects.json'
+import Chargingevents from './charging/events.json'
+import Chargingcontexts from './charging/contexts.json'
+import Chargingmoods from './charging/moods.json'
+
 import Deck from './components/cardDeck'
 import Switch  from './components/Switch'
 import TextInput from './components/textInput'
@@ -45,10 +50,8 @@ function App() {
   const [intro, setIntro] = useState("Silly");
   const [data, setData] = useState(["test1", "test2"]);
   const [mode, setMode] = useState("Silly");
-  const [customData, setCustomData] = useState([["please submit"],["please submit"],["please submit"]])
-  const handleData = (data) => {
-    setData(data)
-  }
+
+
 
   function handleRadio(mode) {
     
@@ -66,11 +69,11 @@ function App() {
     const myCarObjects = shuffle(carobjects).slice(0,1)
     const myCarContexts = shuffle(carcontexts).slice(0,1)
     
-    //customise thing from the future
-    const myCustomeObjects = shuffle(customData[0]).slice(0,1)
-    const myCustomeContexts = shuffle(customData[1]).slice(0,1)
-    const myCustomeMoods = shuffle(customData[2]).slice(0,1)
-    // const myCustomeEvents = shuffle(carevents).slice(0,1)
+    //Charging thing from the future
+    const myChargingeObjects = shuffle(Chargingobjects).slice(0,1)
+    const myChargingeContexts = shuffle(Chargingcontexts).slice(0,1)
+    const myChargingeMoods = shuffle(Chargingmoods).slice(0,1)
+    const myChargingeEvents = shuffle(Chargingevents).slice(0,1)
     
     if(mode == "Silly"){
       setIntro("Let's get silly")
@@ -86,32 +89,33 @@ function App() {
       setContext(myCarContexts)
       setMood(myCarMoods)
     }
-    if(mode == "Custom"){
-      setIntro("Cutomised mode")
-      setObject(myCustomeObjects)
-      setContext(myCustomeContexts)
-      setMood(myCustomeMoods)
+    if(mode == "Charging"){
+      setIntro("Imagine charging")
+      setObject(myChargingeObjects)
+      setContext(myChargingeContexts)
+      setMood(myChargingeMoods)
+      setEvent(myChargingeEvents)
     }
   }
 
   function handleSubmit (childData){
 
-    setCustomData(childData)
+    setChargingData(childData)
     
-    //customise thing from the future
-    const myCustomeObjects = shuffle(childData[0]).slice(0,1)
-    const myCustomeContexts = shuffle(childData[1]).slice(0,1)
-    const myCustomeMoods = shuffle(childData[2]).slice(0,1)
-    // const myCustomeEvents = shuffle(carevents).slice(0,1)
+    //Chargingise thing from the future
+    const myChargingeObjects = shuffle(childData[0]).slice(0,1)
+    const myChargingeContexts = shuffle(childData[1]).slice(0,1)
+    const myChargingeMoods = shuffle(childData[2]).slice(0,1)
+    // const myChargingeEvents = shuffle(carevents).slice(0,1)
 
     setIntro("Cutomised mode")
-    setObject(myCustomeObjects)
-    setContext(myCustomeContexts)
-    setMood(myCustomeMoods)
+    setObject(myChargingeObjects)
+    setContext(myChargingeContexts)
+    setMood(myChargingeMoods)
     // setEvent(childData)
 
     console.log(childData)
-    console.log(myCustomeObjects)
+    console.log(myChargingeObjects)
   }
 
   return (
@@ -119,7 +123,7 @@ function App() {
       <RadioButton handleMode={handleRadio}/>
       <button id="redraw" onClick={event =>handleRadio(mode)}> redraw </button>
       <Deck gameIntro={intro} Moods={mood} Objects={object} Contexts={context} Events={event}/> 
-      <TextInput handleCallback={handleSubmit}/>
+      {/* <TextInput handleCallback={handleSubmit}/> */}
     </div> 
   );
 }
