@@ -4,7 +4,7 @@ import  './RadioButton.css';
 
 
 export default function RadioButton({handleMode}) {
-  const [mode, setMode] = useState("Mobility")
+  const [mode, setMode] = useState("Silly")
 
   const onOptionChange = e => {
     setMode(e.target.value)
@@ -36,17 +36,13 @@ export default function RadioButton({handleMode}) {
 
       <input className="singleRadio"
         type="radio"
-        name="Cutom"
-        value="Cutom"
-        id="Cutom"
-        checked={mode === "Cutom"}
+        name="Custom"
+        value="Custom"
+        id="Custom"
+        checked={mode === "Custom"}
         onChange={e => {setMode(e.target.value); handleMode(e.target.value)}}
       />
-      <label htmlFor="Cutom">Cutom</label>
-
-      <p>
-        Selected mode is :  <strong>{mode}</strong>
-      </p>
+      <label htmlFor="Custom">Custom</label>
     </div>
   )
 }

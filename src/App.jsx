@@ -19,9 +19,6 @@ import RadioButton from './components/RadioButton'
 import { getStyleValue } from "@mui/system";
 
 
-
-// let mode = false
-
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
 
@@ -45,16 +42,18 @@ function App() {
   const [event, setEvent] = useState([{        "title": "Collapse", "description": "example"}]);
   const [mood, setMood] = useState(["Amusement"]);
   const [context, setContext] = useState(["Zombies"]);
-  const [intro, setIntro] = useState("example");
+  const [intro, setIntro] = useState("Silly");
   const [data, setData] = useState(["test1", "test2"]);
-
+  const [mode, setMode] = useState("Silly");
+  const [customData, setCustomData] = useState([["please submit"],["please submit"],["please submit"]])
   const handleData = (data) => {
     setData(data)
   }
 
-  function handleToggle(mode) {
+  function handleRadio(mode) {
     
     console.log(mode)
+    setMode(mode)
     //silly thing from the future
     const mySillyMoods = shuffle(moods).slice(0,1)
     const mySillyEvents = shuffle(events).slice(0,1)
@@ -67,7 +66,14 @@ function App() {
     const myCarObjects = shuffle(carobjects).slice(0,1)
     const myCarContexts = shuffle(carcontexts).slice(0,1)
     
+    //customise thing from the future
+    const myCustomeObjects = shuffle(customData[0]).slice(0,1)
+    const myCustomeContexts = shuffle(customData[1]).slice(0,1)
+    const myCustomeMoods = shuffle(customData[2]).slice(0,1)
+    // const myCustomeEvents = shuffle(carevents).slice(0,1)
+    
     if(mode == "Silly"){
+      setIntro("Let's get silly")
       setEvent(mySillyEvents)
       setObject(mySillyObjects)
       setContext(mySillyContexts)
@@ -81,27 +87,24 @@ function App() {
       setMood(myCarMoods)
     }
     if(mode == "Custom"){
-
+      setIntro("Cutomised mode")
       setObject(myCustomeObjects)
       setContext(myCustomeContexts)
       setMood(myCustomeMoods)
-      // setEvent(childData)
-  
-      console.log(childData)
-      console.log(myCustomeObjects)
     }
   }
 
-  function CallBack (childData){
+  function handleSubmit (childData){
 
+    setCustomData(childData)
+    
     //customise thing from the future
     const myCustomeObjects = shuffle(childData[0]).slice(0,1)
     const myCustomeContexts = shuffle(childData[1]).slice(0,1)
     const myCustomeMoods = shuffle(childData[2]).slice(0,1)
     // const myCustomeEvents = shuffle(carevents).slice(0,1)
 
-
-
+    setIntro("Cutomised mode")
     setObject(myCustomeObjects)
     setContext(myCustomeContexts)
     setMood(myCustomeMoods)
@@ -113,14 +116,10 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={event =>handleToggle()}> redraw </button>
-      {/* <Switch 
-        isOn={mode}
-        handleToggle={() => {mode = !mode; handleToggle();}}
-      /> */}
+      <RadioButton handleMode={handleRadio}/>
+      <button id="redraw" onClick={event =>handleRadio(mode)}> redraw </button>
       <Deck gameIntro={intro} Moods={mood} Objects={object} Contexts={context} Events={event}/> 
-      <TextInput handleCallback={CallBack}/>
-      <RadioButton handleMode={handleToggle}/>
+      <TextInput handleCallback={handleSubmit}/>
     </div> 
   );
 }
