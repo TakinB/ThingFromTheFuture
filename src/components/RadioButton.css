@@ -1,0 +1,11 @@
+singleRadio {
+    background-color: #D8AC8F;
+    border-radius: 0.3rem;
+    align-items: center;
+    justify-content: space-between;
+}
+.RadioLabel{
+    display: inline;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
