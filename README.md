@@ -8,6 +8,6 @@ A game developed by Situation Lab for Speculative Design practice. Modified to h
 # Mobility mode 
 ![](media/thing-from-future-mobility.gif)
 
-# Cutomised mode 
+# Customised mode 
 ![](media/thing-from-future-custom.gif)
 
