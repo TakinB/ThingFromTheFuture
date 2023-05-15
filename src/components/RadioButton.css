@@ -8,4 +8,5 @@ singleRadio {
     display: inline;
     justify-content: space-between;
     padding: 0.5rem;
+    align-items: center;
 }

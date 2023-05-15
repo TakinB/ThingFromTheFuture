@@ -50,7 +50,7 @@ function CardContent(props) {
 export default function Card(props) {
   
     return (
-      <div style={{ width: props.width + "px" }}>
+      <div >
         <div className="Card">
           <CardImage image={props.image} width={props.width} />
           <CardContent 
@@ -65,9 +65,9 @@ export default function Card(props) {
 
 
 // 2. Defaults /////////////////////////////////////////////
-Card.defaultProps = {
-  width: 400,
-  title: "not found",
-  type: "not found",
-  description: ""
-};
+// Card.defaultProps = {
+//   width: 400,
+//   title: "not found",
+//   type: "not found",
+//   description: ""
+// };

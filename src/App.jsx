@@ -3,12 +3,12 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 import FileUpload from './components/FileUpload';
 import objects from './data/objects.json'
-import events from './data/events.json'
+import futures from './data/events.json'
 import contexts from './data/contexts.json'
 import moods from './data/moods.json'
 
 import carobjects from './mobility/objects.json'
-import carevents from './mobility/events.json'
+import carfutures from './mobility/events.json'
 import carcontexts from './mobility/contexts.json'
 import carmoods from './mobility/moods.json'
 
@@ -39,13 +39,37 @@ function shuffle(array) {
 // use instead  math.random(length of the array) 
 function App() {
   const [object, setObject] = useState([ "Beverage"]);
-  const [event, setEvent] = useState([{        "title": "Collapse", "description": "a future in which society as we know it has come apart"}]);
+  const [future, setFuture] = useState([    {
+    title: "Collapse",
+    description: "a future in which society as we know it has come apart",
+  },     {
+    title: "Grow",
+    description: "a future in which “progress” has continued",
+  },     {
+    title: "Dicipline",
+    description: "a future in which order is deliberately coordinated or imposed",
+  },     {
+    title: "Transform",
+    description: "a future in which a profound historical evolution has occurred",
+  }]);
   const [mood, setMood] = useState(["Amusement"]);
   const [context, setContext] = useState(["Zombies"]);
   const [intro, setIntro] = useState("Silly");
   const [data, setData] = useState(["test1", "test2"]);
   const [mode, setMode] = useState("Silly");
-  const [customData, setCustomData] = useState([["object1", "object2"],["object1", "object2"],["object1", "object2"]])
+  const [customData, setCustomData] = useState([["object1", "object2"],["context1", "context2"],[    {
+    title: "Collapse",
+    description: "a future in which society as we know it has come apart",
+  },     {
+    title: "Grow",
+    description: "a future in which “progress” has continued",
+  },     {
+    title: "Dicipline",
+    description: "a future in which order is deliberately coordinated or imposed",
+  },     {
+    title: "Transform",
+    description: "a future in which a profound historical evolution has occurred",
+  }], ["emotion1", "emotion2"]])
   
   const handleData = (data) => {
     setData(data)
@@ -61,32 +85,32 @@ function App() {
   function handleDraw(mode){
         //silly thing from the future
         const mySillyMoods = shuffle(moods).slice(0,1)
-        const mySillyEvents = shuffle(events).slice(0,1)
+        const mySillyFutures = shuffle(futures).slice(0,1)
         const mySillyObjects = shuffle(objects).slice(0,1)
         const mySillyContexts = shuffle(contexts).slice(0,1)
     
         //mobility thing from the future
         const myCarMoods = shuffle(carmoods).slice(0,1)
-        const myCarEvents = shuffle(carevents).slice(0,1)
+        const myCarFutures = shuffle(carfutures).slice(0,1)
         const myCarObjects = shuffle(carobjects).slice(0,1)
         const myCarContexts = shuffle(carcontexts).slice(0,1)
         
         //customise thing from the future
         const myCustomeObjects = shuffle(customData[0]).slice(0,1)
         const myCustomeContexts = shuffle(customData[1]).slice(0,1)
-        const myCustomeMoods = shuffle(customData[2]).slice(0,1)
-        // const myCustomeEvents = shuffle(carevents).slice(0,1)
+        const myCustomeMoods = shuffle(customData[3]).slice(0,1)
+        const myCustomeFutures = shuffle(customData[2]).slice(0,1)
         
         if(mode == "Silly"){
           setIntro("Let's get silly")
-          setEvent(mySillyEvents)
+          setFuture(mySillyFutures)
           setObject(mySillyObjects)
           setContext(mySillyContexts)
           setMood(mySillyMoods)
         }
         if(mode == "Mobility"){
           setIntro("Imagine mobililty")
-          setEvent(myCarEvents)
+          setFuture(myCarFutures)
           setObject(myCarObjects)
           setContext(myCarContexts)
           setMood(myCarMoods)
@@ -96,26 +120,28 @@ function App() {
           setObject(myCustomeObjects)
           setContext(myCustomeContexts)
           setMood(myCustomeMoods)
+          setFuture(myCustomeFutures)
         }
   }
   function handleSubmit (childData){
-
+    console.log(childData)
     setCustomData(childData)
     
     //customise thing from the future
     const myCustomeObjects = shuffle(childData[0]).slice(0,1)
     const myCustomeContexts = shuffle(childData[1]).slice(0,1)
-    const myCustomeMoods = shuffle(childData[2]).slice(0,1)
-    // const myCustomeEvents = shuffle(carevents).slice(0,1)
+    const myCustomeMoods = shuffle(childData[3]).slice(0,1)
+    const myCustomeFutures = shuffle(childData[2]).slice(0,1)
 
     setIntro("Cutomised mode")
     setObject(myCustomeObjects)
     setContext(myCustomeContexts)
     setMood(myCustomeMoods)
-    // setEvent(childData)
+    setFuture(myCustomeFutures)
 
     console.log(childData)
-    console.log(myCustomeObjects)
+    console.log(myCustomeFutures.title)
+
   }
 
   return (
@@ -125,7 +151,7 @@ function App() {
         <TextInput handleCallback={handleSubmit}/>
       }
       <button id="redraw" onClick={event =>handleDraw(mode)}> redraw </button>
-      <Deck gameIntro={intro} Moods={mood} Objects={object} Contexts={context} Events={event}/> 
+      <Deck gameIntro={intro} Moods={mood} Objects={object} Contexts={context} Futures={future}/> 
     </div> 
   );
 }
