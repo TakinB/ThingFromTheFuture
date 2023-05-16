@@ -76,8 +76,7 @@ function App() {
   }
 
   function handleRadio(mode) {
-    
-    console.log(mode)
+
     setMode(mode)
 
   }
@@ -124,7 +123,6 @@ function App() {
         }
   }
   function handleSubmit (childData){
-    console.log(childData)
     setCustomData(childData)
     
     //customise thing from the future
@@ -138,10 +136,6 @@ function App() {
     setContext(myCustomeContexts)
     setMood(myCustomeMoods)
     setFuture(myCustomeFutures)
-
-    console.log(childData)
-    console.log(myCustomeFutures.title)
-
   }
 
   return (
