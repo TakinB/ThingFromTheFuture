@@ -2,10 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import "./textInput.css";
 
 const TextInput = ({ handleCallback }) => {
-  const [objectString, setObjectString] = useState(["object1", "object2"]);
-  const [contextString, setContextString] = useState(["context1", "context2"]);
-  const [emotionString, setEmotionString] = useState(["emotion1", "emotion2"]);
-  const [eventString, setEventString] = useState([
+  const defaultValues = [["object1", "object2"],["context1", "context2"],["emotion1", "emotion2"],[
     {
       title: "Collapse",
       description: "a future in which society as we know it has come apart",
@@ -19,7 +16,12 @@ const TextInput = ({ handleCallback }) => {
       title: "Transform",
       description: "a future in which a profound historical evolution has occurred",
     }
-  ]);
+  ]]
+  
+  const [objectString, setObjectString] = useState(defaultValues[0]);
+  const [contextString, setContextString] = useState(defaultValues[1]);
+  const [emotionString, setEmotionString] = useState(defaultValues[2]);
+  const [eventString, setEventString] = useState(defaultValues[3]);
 
 
   return (
@@ -30,8 +32,8 @@ const TextInput = ({ handleCallback }) => {
           <p> Object:</p>
           <input
             className="singleInput"
-            value={objectString}
-            onChange={(e) => setObjectString(e.target.value.split(","))}
+            placeholder={objectString}
+            onChange={(e) => setObjectString(e.target.value.trim().length!=0 ? e.target.value.split(",") : defaultValues[0])}
             type="string"
           />
         </div>
@@ -41,8 +43,8 @@ const TextInput = ({ handleCallback }) => {
 
           <input
             className="singleInput"
-            value={contextString}
-            onChange={(e) => setContextString(e.target.value.split(","))}
+            placeholder={contextString}
+            onChange={(e) => setContextString(e.target.value.trim().length!=0 ? e.target.value.split(",") : defaultValues[1])}
             type="string"
           />
         </div>
@@ -50,9 +52,10 @@ const TextInput = ({ handleCallback }) => {
         <div className="InputLabel">
           <p>Type of future:</p>
           <input
+            placeholder={JSON.stringify(eventString)}
             className="singleInput"
-            value={eventString}
-            onChange={(e) => setEventString(e.target.value.split(","))}
+            // value={JSON.stringify(eventString)}
+            onChange={(e) => setEventString(e.target.value.trim().length!=0 ? e.target.value.split(",") : defaultValues[3])}
             type="string"
           />
         </div>
@@ -61,8 +64,8 @@ const TextInput = ({ handleCallback }) => {
           <p>Emotion:</p>
           <input
             className="singleInput"
-            value={emotionString}
-            onChange={(e) => setEmotionString(e.target.value.split(","))}
+            placeholder={emotionString}
+            onChange={(e) => setEmotionString(e.target.value.trim().length!=0 ? e.target.value.split(",") : defaultValues[2])}
             type="string"
           />
         </div>
