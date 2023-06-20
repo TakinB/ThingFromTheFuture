@@ -1,6 +1,6 @@
 @font-face {
   font-family: pixelemulator;
-  src: url(./fonts/PixelEmulator.otf);
+  src: url(../fonts/PixelEmulator.otf);
 }
 
 .App {
